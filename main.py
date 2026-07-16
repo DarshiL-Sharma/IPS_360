@@ -8,12 +8,11 @@ app.config['SECRET_KEY'] = 'Secret-key'
 
 @app.route('/')
 def landing_page():
-    docs  = db.collection("users").stream()
-
-    for doc in docs:
-        print(doc.id, doc.to_dict())
-
     return render_template("landing_page.html")
+
+@app.route('/Prof')
+def teacher_page():
+    return render_template("prof_page.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
