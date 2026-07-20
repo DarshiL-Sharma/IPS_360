@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from firebase_config import db
 
-
+app = Flask(__name__,template_folder="templates")
+app.config['SECRET_KEY'] = 'Secret_key'
 
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'Secret-key'
@@ -18,16 +19,16 @@ def teacher_page():
 def teacher_login():
     return render_template("login_page_teacher.html")
 
-@app.route('login/student')
+@app.route('/login/student')
 def student_login():
     return render_template("login_page_student.html")
 
-@app.route('login/student/dashboard')
-def dashboard():
+@app.route('/login/student/dashboard')
+def student_dashboard():
     return render_template("dashboard.html")
 
-@app.route('login/teacher/dashboard')
-def dashboard():
+@app.route('/login/teacher/dashboard')
+def teacher_dashboard():
     return render_template("teacher_dashboard.html")
 
 
